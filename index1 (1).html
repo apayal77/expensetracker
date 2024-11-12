@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" type="text/css" href="style1 (1).css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="final home (1).html">HOME</a>
+        <a href="Login (1).html">LOGIN</a>
+        <a href="index1 (1).html">EXPENSES</a>
+        <a href="calculator (1).html">CALCULATOR</a>
+        <a href="pc.html">PROFESSIONAL CONSULTANCY</a>
+    </div>
+
+    <div class="container">
+        <h1>Track Your Expenses With Us!</h1><br><br>
+        <form id="expense-form" method="post" name="google-sheet3">
+            <input type="text" id="expense-name" placeholder="Expense Name" name="Expense_name" />
+            <input type="number" id="expense-amount" placeholder="Amount" name="Amount" />
+            <select id="expense-category" name="Category">
+                <option value="" disabled selected>Select Category</option>
+                <option value="Food">Food</option>
+                <option value="Education Fee">Education Fee</option>
+                <option value="Transport">Transport</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Savings">Savings</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Rent">Rent</option>
+                <option value="Loan">Loan</option>
+                <option value="Healthcare">Healthcare</option>
+                <option value="Other">Other</option>
+            </select>
+            <input type="date" id="expense-date" name="Date" />
+            <button type="submit" name="submit">Add Expense</button>
+        </form>
+
+        <div class="expense-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Expense Name</th>
+                        <th>Amount</th>
+                        <th>Category</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="expense-list"></tbody>
+            </table>
+            <div class="total-amount">
+                <strong>Total:</strong> &#8377;<span id="total-amount">0</span>
+            </div>
+        </div>
+        <h2>Expenses Analysis</h2><br>
+        <button id="generate-chart">CLICK HERE TO GENERATE PIE CHART</button>
+        <canvas id="expenseChart" width="400" height="400"></canvas>
+        <h3>Pie Chart</h3>
+        <br><br>
+        <button id="generate-chart1">CLICK HERE TO GENERATE BAR</button><br><br>
+        <canvas id="expenseChart1" width="500" height="500"></canvas>
+        <h4>Bar Graph</h4>
+    </div>
+
+    <script src="script1 (1).js"></script>
+
+
+
+
+
+</body>
+</html>

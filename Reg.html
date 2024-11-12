@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Registration Form</title>
+    <style>
+        .navbar {
+            background-color: #1a5881;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .navbar a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .main {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 300px;
+        }
+
+        .main h2 {
+            color: #0a4d7a;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            padding: 15px;
+            border-radius: 10px;
+            border: none;
+            background-color: #1a5881;
+            color: white;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body bgcolor=" #e6f5ff">
+    <div class="navbar">
+        <a href="final home (1).html">HOME</a>
+        <a href="Login (1).html">LOGIN</a>
+        <a href="index1 (1).html">EXPENSES</a>
+        <a href="calculator (1).html">CALCULATOR</a>
+        <a href="#contact">CONTACT</a>
+    </div>
+    <div class="main">
+        <h2>Registration Form</h2>
+        <br>
+        <form action="#" method="post" name="google-sheet2">
+            <label for="first">First Name:</label>
+            <input type="text" id="first" name="First"/>
+
+            <label for="last">Last Name:</label>
+            <input type="text" id="last" name="Last"/>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="Email"/>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="Password"
+                   pattern="^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])\S{8,}$" 
+                   title="Password must contain at least one number, 
+                           one alphabet, one symbol, and be at 
+                           least 8 characters long" required />
+
+            <label for="repassword">Re-type Password:</label>
+            <input type="password" id="repassword" name="Repassword"/>
+
+            <label for="mobile">Contact:</label>
+            <input type="text" id="mobile" name="Mobile" maxlength="10" name="Mobile" />
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="Gender" required>
+                <option value="male">
+                    Male
+                </option>
+                <option value="female">
+                    Female
+                </option>
+                <option value="other">
+                    Other
+                </option>
+            </select>
+
+            <button type="submit" name="submit">
+                Submit
+            </button>
+        </form>
+    </div>
+
+        <script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbz_NWpI9yWMzlVSjrwp7viGet2wMJFVyfL3UYVtDHFDDzBhKvBwPjKm81GdrBnRBt51/exec'
+            const form = document.forms['google-sheet2']
+          
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+                .catch(error => console.error('Error!', error.message))
+            })
+          </script>
+
+
+</body>
+
+</html>

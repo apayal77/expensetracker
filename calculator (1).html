@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Calculators</title>
+    <style>
+        
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .calculator { margin-bottom: 30px; }
+        label { display: block; margin: 10px 0 5px; }
+        input { padding: 8px; width: 100%; max-width: 300px; }
+        button { padding: 10px; margin-top: 10px; }
+        .result { margin-top: 15px; font-weight: bold; }
+
+    .navbar {
+    background-color: #1a5881;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width:100%;
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.navbar a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+    </style>
+</head>
+<body bgcolor="#e6f5ff">
+
+    <div class="navbar">
+        <a href="final home (1).html">HOME</a>
+        <a href="Login (1).html">LOGIN</a>
+        <a href="index1 (1).html">EXPENSES</a>
+        <a href="calculator (1).html">CALCULATOR</a>
+        <a href="pc.html">PROFESSIONAL CONSULTANCY</a>
+    </div>
+    
+    <br><br><br>
+    <h1>Business Calculators</h1>
+
+    <div class="calculator">
+        <h2>Gross Margin Calculator</h2>
+        <label for="revenue">Revenue:</label>
+        <input type="number" id="revenue" required>
+        <label for="cogs">Cost of Goods Sold (COGS):</label>
+        <input type="number" id="cogs" required>
+        <button onclick="calculateGrossMargin()">Calculate Gross Margin</button>
+        <div class="result" id="grossMarginResult"></div>
+    </div>
+
+    <div class="calculator">
+        <h2>Net Margin Calculator</h2>
+        <label for="netIncome">Net Income:</label>
+        <input type="number" id="netIncome" required>
+        <label for="netRevenue">Revenue:</label>
+        <input type="number" id="netRevenue" required>
+        <button onclick="calculateNetMargin()">Calculate Net Margin</button>
+        <div class="result" id="netMarginResult"></div>
+    </div>
+
+    <div class="calculator">
+        <h2>Contribution Margin Calculator</h2>
+        <label for="contributionRevenue">Revenue:</label>
+        <input type="number" id="contributionRevenue" required>
+        <label for="variableCosts">Variable Costs:</label>
+        <input type="number" id="variableCosts" required>
+        <button onclick="calculateContributionMargin()">Calculate Contribution Margin</button>
+        <div class="result" id="contributionMarginResult"></div>
+    </div>
+
+    <div class="calculator">
+        <h2>Sales Tax Calculator</h2>
+        <label for="purchaseAmount">Purchase Amount:</label>
+        <input type="number" id="purchaseAmount" required>
+        <label for="salesTaxRate">Sales Tax Rate (%):</label>
+        <input type="number" id="salesTaxRate" required>
+        <button onclick="calculateSalesTax()">Calculate Sales Tax</button>
+        <div class="result" id="salesTaxResult"></div>
+    </div>
+
+    <div class="calculator">
+        <h2>Payroll Tax Calculator</h2>
+        <label for="grossPay">Gross Pay:</label>
+        <input type="number" id="grossPay" required>
+        <label for="payrollTaxRate">Payroll Tax Rate (%):</label>
+        <input type="number" id="payrollTaxRate" required>
+        <button onclick="calculatePayrollTax()">Calculate Payroll Tax</button>
+        <div class="result" id="payrollTaxResult"></div>
+    </div>
+
+    <div class="calculator">
+        <h2>ROI Calculator</h2>
+        <label for="netProfit">Net Profit:</label>
+        <input type="number" id="netProfit" required>
+        <label for="investmentCost">Investment Cost:</label>
+        <input type="number" id="investmentCost" required>
+        <button onclick="calculateROI()">Calculate ROI</button>
+        <div class="result" id="roiResult"></div>
+    </div>
+
+    <div class="calculator">
+        <h2>NPV Calculator</h2>
+        <label for="cashFlow">Cash Inflows (comma-separated):</label>
+        <input type="text" id="cashFlow" required>
+        <label for="discountRate">Discount Rate (%):</label>
+        <input type="number" id="discountRate" required>
+        <label for="initialInvestment">Initial Investment:</label>
+        <input type="number" id="initialInvestment" required>
+        <button onclick="calculateNPV()">Calculate NPV</button>
+        <div class="result" id="npvResult"></div>
+    </div>
+
+    <script>
+        function calculateGrossMargin() {
+            const revenue = parseFloat(document.getElementById('revenue').value);
+            const cogs = parseFloat(document.getElementById('cogs').value);
+            const grossMargin = ((revenue - cogs) / revenue) * 100;
+            document.getElementById('grossMarginResult').innerText = `Gross Margin: ${grossMargin.toFixed(2)}%`;
+        }
+
+        function calculateNetMargin() {
+            const netIncome = parseFloat(document.getElementById('netIncome').value);
+            const revenue = parseFloat(document.getElementById('netRevenue').value);
+            const netMargin = (netIncome / revenue) * 100;
+            document.getElementById('netMarginResult').innerText = `Net Margin: ${netMargin.toFixed(2)}%`;
+        }
+
+        function calculateContributionMargin() {
+            const revenue = parseFloat(document.getElementById('contributionRevenue').value);
+            const variableCosts = parseFloat(document.getElementById('variableCosts').value);
+            const contributionMargin = revenue - variableCosts;
+            const contributionMarginRatio = (contributionMargin / revenue) * 100;
+            document.getElementById('contributionMarginResult').innerText = `Contribution Margin: ${contributionMargin.toFixed(2)}, Ratio: ${contributionMarginRatio.toFixed(2)}%`;
+        }
+
+        function calculateSalesTax() {
+            const purchaseAmount = parseFloat(document.getElementById('purchaseAmount').value);
+            const salesTaxRate = parseFloat(document.getElementById('salesTaxRate').value) / 100;
+            const salesTax = purchaseAmount * salesTaxRate;
+            document.getElementById('salesTaxResult').innerText = `Sales Tax: $${salesTax.toFixed(2)}`;
+        }
+
+        function calculatePayrollTax() {
+            const grossPay = parseFloat(document.getElementById('grossPay').value);
+            const payrollTaxRate = parseFloat(document.getElementById('payrollTaxRate').value) / 100;
+            const payrollTax = grossPay * payrollTaxRate;
+            document.getElementById('payrollTaxResult').innerText = `Payroll Tax: $${payrollTax.toFixed(2)}`;
+        }
+
+        function calculateROI() {
+            const netProfit = parseFloat(document.getElementById('netProfit').value);
+            const investmentCost = parseFloat(document.getElementById('investmentCost').value);
+            const roi = (netProfit / investmentCost) * 100;
+            document.getElementById('roiResult').innerText = `ROI: ${roi.toFixed(2)}%`;
+        }
+
+        function calculateNPV() {
+            const cashFlows = document.getElementById('cashFlow').value.split(',').map(Number);
+            const discountRate = parseFloat(document.getElementById('discountRate').value) / 100;
+            const initialInvestment = parseFloat(document.getElementById('initialInvestment').value);
+
+            let npv = -initialInvestment; // Start with the negative initial investment
+            cashFlows.forEach((cashFlow, index) => {
+                npv += cashFlow / Math.pow(1 + discountRate, index + 1);
+            });
+
+            document.getElementById('npvResult').innerText = `NPV: $${npv.toFixed(2)}`;
+        }
+    </script>
+
+</body>
+</html>
